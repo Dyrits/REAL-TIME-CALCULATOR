@@ -52,7 +52,7 @@ function addValue($event) {
     screenBottom.textContent += value;
     currentValue = Number(screenBottom.textContent);
     screenBottom.textContent = currentValue; // Update it as a numerical value.
-    if(currentValue == "0") { return; } else { screenMiddle.textContent += value; }
+    if(currentValue !== 0) { screenMiddle.textContent += value; }
     // The first zero is removed if the second character is not a dot:
     if (screenMiddle.textContent.length > 1 && screenMiddle.textContent[0] == "0" && screenMiddle.textContent[1] !== ".") {
       screenMiddle.textContent = screenMiddle.textContent.substring(1);
