@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap');
+
+$light-gray: #AAA;
+$dark-gray: #333;
+$main-color: rgb(47, 76, 76);
+
+@function uni-gradient($color) {
+  @return linear-gradient(lighten($color, 5%) 0%, $color 50%, lighten($color, 10%) 75%, $color 100%);
+}
+
+@mixin operators-colors {
+  color: $light-gray;
+  background-image: uni-gradient($dark-gray);
+}
+
+@mixin width-height-buttons {
+  width: 80px;
+  height: 80px;
+}
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background-image: url("https://images.unsplash.com/photo-1432821596592-e2c18b78144f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: 'Uncial Antiqua', cursive;
+}
+
+#calculator {
+  box-sizing: border-box;
+  width: 425px;
+  height: 575px;
+  margin: 50px auto 50px 60px;
+  background-image: uni-gradient($main-color);
+  border: 3px solid darken(rgb(47, 76, 76), 10%);
+  border-radius: 10%;
+  -webkit-box-shadow: 2px 2px 0px 0px $main-color;
+  -moz-box-shadow: 2px 2px 0px 0px $main-color;
+  box-shadow: 2px 2px 0px 0px $main-color;
+  transform: rotate(-35deg);
+} 
+
+button {
+  cursor: pointer;
+  &::-moz-focus-inner {border: 0; }
+}
+
+#screens {
+  height: 150px;
+  width: 90%;
+  margin: 20px auto;
+  border-radius: 10%;
+  background-color: $dark-gray;
+  .screen {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    width: 300px;
+    height: 50px;
+    margin: 0 auto;
+    text-align: right;
+    color: #FFF;
+  }
+}
+
+#numbers-dot-equal-ac{
+  color: $dark-gray;
+  width: 330px;
+  display: inline-flex; 
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.number{
+  background-image: uni-gradient($light-gray);
+  color: $dark-gray;
+  @include width-height-buttons();
+  flex-shrink: 0;
+  margin: 5px;
+  text-align: center;
+  font-size: 50px;
+  border-radius: 50%;
+  transition: transform 0.8s;
+  &:hover {
+    border: 3px solid $dark-gray;
+    transform: scale(1.025);
+    color: complement($main-color);
+  }
+}
+
+#dot {
+  width: 30px;
+  height: 30px;
+  margin: 0 120px;
+  align-self: center;
+  justify-self: center;
+  font-size: 20px;
+  position: relative;
+  bottom: 20px;
+  right: 65px;
+}
+
+#ac {
+  background-image: uni-gradient(complement($main-color));
+  font-size: 30px;
+  border-radius: 20px;
+  color: lighten($main-color, 10%);
+  @include width-height-buttons();
+  margin: 5px;
+  &:hover {
+    background-image: linear-gradient(lighten(complement($main-color), 15%) 0%, complement($main-color) 50%, lighten(complement($main-color), 20%));
+    border: 3px solid $dark-gray;
+    color: $light-gray;
+  }
+
+}
+
+#equal {
+  @include operators-colors();
+  @include width-height-buttons();
+  border-radius: 20px;
+  transition: border-radius 1.8s;
+  margin: 5px;
+  &:hover {
+    border-radius: 30%;
+    border: 3px solid complement($main-color);
+  }
+}
+
+#operators{
+  box-sizing: border-box; 
+  display: inline-flex;
+  flex-wrap: wrap;
+  width: 85px;
+  height: 100px;
+  justify-content: center;
+}
+
+.operator {
+    width: 70px;
+    height: 80px;
+    margin: 5px auto;
+    text-align: center;
+    font-size: 50px;
+    @include operators-colors();
+    border-radius: 50% 10% 25% 50%;
+    transition: transform 0.8s;
+    &:hover {
+      transform: rotate(30deg) translateX(-10px);
+    }
+}
