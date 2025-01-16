@@ -60,7 +60,7 @@ Launch the project in your browser through the .html file.
 
 == Demonstration
 
-https://dyrits.github.io/WEBDEV-TOP-RTC/[Try it!]
+https://dyrits.github.io/REAL-TIME-CALCULATOR/[Try it!]
 
 == Status
 
